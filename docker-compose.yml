@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  ksharing-demo-service-1:
+    build:
+      context: ./build/ubuntu
+      dockerfile: Dockerfile
+    image: ksharing-demo-ubuntu
+    #user: "robot"
+    volumes:
+      - robotframework_data:/usr/src/app
+    container_name: ksharing-demo-ubuntu-env
+    #entrypoint: /docker-entrypoint.sh
+    tty: true
+
+  # robotframework-fedora:
+  #   build:
+  #     context: ./build/fedora
+  #     dockerfile: Dockerfile
+  #   image: rf-fedora
+  #   #user: "robot"
+  #   volumes:
+  #     - robotframework_data:/usr/src/app
+  #   container_name: robotframework-16.04-01-fedora
+  #   #entrypoint: /docker-entrypoint.sh
+  #   #restart: always
+  #   tty: true
+
+volumes:
+  robotframework_data:
+    driver: local

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190917 12:22:13.081" generator="Robot 3.1.2 (Python 2.7.12 on linux2)">
+<suite source="/suites" id="s1" name="Suites">
+<suite source="/suites/robot_framework.robot" id="s1-s1" name="Robot Framework">
+<test id="s1-s1-t1" name="Foo Test Case">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>%{USERNAME}</arg>
+</arguments>
+<msg timestamp="20190917 12:22:13.137" level="INFO">Ipatios Asmanidis</msg>
+<status status="PASS" endtime="20190917 12:22:13.138" starttime="20190917 12:22:13.137"></status>
+</kw>
+<doc>Created by Ipatios Asmanidis</doc>
+<tags>
+<tag>RobotTestCase</tag>
+<tag>RobotWebPage</tag>
+</tags>
+<status status="PASS" endtime="20190917 12:22:13.138" critical="yes" starttime="20190917 12:22:13.133"></status>
+</test>
+<status status="PASS" endtime="20190917 12:22:13.139" starttime="20190917 12:22:13.129"></status>
+</suite>
+<suite source="/suites/virtual_display.robot" id="s1-s2" name="Virtual Display">
+<test id="s1-s2-t1" name="Open Google">
+<kw name="Start Virtual Display" library="XvfbRobot">
+<doc>Starts virtual display which will be
+ destroyed after test execution will be end</doc>
+<arguments>
+<arg>1920</arg>
+<arg>1080</arg>
+</arguments>
+<msg timestamp="20190917 12:22:13.602" level="INFO">Using virtual display: '1920x1080x24'</msg>
+<status status="PASS" endtime="20190917 12:22:14.243" starttime="20190917 12:22:13.601"></status>
+</kw>
+<kw name="Open Chrome Browser">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20190917 12:22:14.245" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f3e6fb1e8d0&gt;</msg>
+<status status="PASS" endtime="20190917 12:22:14.245" starttime="20190917 12:22:14.244"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" endtime="20190917 12:22:14.246" starttime="20190917 12:22:14.245"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>download.default_directory=${TMP_PATH}</arg>
+</arguments>
+<assign>
+<var>${prefs}</var>
+</assign>
+<msg timestamp="20190917 12:22:14.247" level="INFO">${prefs} = {u'download.default_directory': u'/tmp'}</msg>
+<status status="PASS" endtime="20190917 12:22:14.247" starttime="20190917 12:22:14.246"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+</arguments>
+<status status="PASS" endtime="20190917 12:22:14.247" starttime="20190917 12:22:14.247"></status>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${options}</arg>
+</arguments>
+<msg timestamp="20190917 12:22:14.248" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" endtime="20190917 12:22:17.203" starttime="20190917 12:22:14.248"></status>
+</kw>
+<status status="PASS" endtime="20190917 12:22:17.204" starttime="20190917 12:22:14.244"></status>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>http://google.com</arg>
+</arguments>
+<msg timestamp="20190917 12:22:17.205" level="INFO">Opening url 'http://google.com'</msg>
+<status status="PASS" endtime="20190917 12:22:19.027" starttime="20190917 12:22:17.204"></status>
+</kw>
+<kw name="Get Title" library="Selenium2Library">
+<doc>Returns the title of current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20190917 12:22:19.049" level="INFO">${title} = Google</msg>
+<status status="PASS" endtime="20190917 12:22:19.049" starttime="20190917 12:22:19.027"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>Google</arg>
+<arg>${title}</arg>
+</arguments>
+<status status="PASS" endtime="20190917 12:22:19.050" starttime="20190917 12:22:19.049"></status>
+</kw>
+<status status="PASS" endtime="20190917 12:22:19.050" critical="yes" starttime="20190917 12:22:13.598"></status>
+</test>
+<status status="PASS" endtime="20190917 12:22:19.052" starttime="20190917 12:22:13.140"></status>
+</suite>
+<status status="PASS" endtime="20190917 12:22:19.058" starttime="20190917 12:22:13.086"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="1">RobotTestCase</stat>
+<stat fail="0" pass="1">RobotWebPage</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="Suites" pass="2">Suites</stat>
+<stat fail="0" id="s1-s1" name="Robot Framework" pass="1">Suites.Robot Framework</stat>
+<stat fail="0" id="s1-s2" name="Virtual Display" pass="1">Suites.Virtual Display</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
